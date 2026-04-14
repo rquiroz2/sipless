@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 3002,
-    open: true,
+    open: false,
     allowedHosts: ["drinks.rafcloud.net"],
     proxy: {
       "/api": "http://localhost:3003",
