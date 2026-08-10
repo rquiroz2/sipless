@@ -1,3 +1,6 @@
 node_modules/
 sipless-data.json
 dist/
+dist-check/
+dist-check5/
+service*.log
