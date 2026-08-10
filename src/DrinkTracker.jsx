@@ -559,45 +559,7 @@ export default function DrinkTracker() {
             </div>
           </div>
 
-          {morningForDay(dateKey(new Date()))===null&&(
-            <div style={S.morningCard}>
-              <div style={S.cardHeader}>
-                <span style={S.cardTitle}>Morning Feel</span>
-                <span style={S.morningHint}>How's this morning?</span>
-              </div>
-              <div style={S.sliderWrap}>
-                <div style={S.sliderValueRow}>
-                  <span style={S.sliderValue}>{morningDraft.toFixed(1)}</span>
-                  <span style={S.sliderMax}>/ 10</span>
-                </div>
-                <input type="range" min="1" max="10" step="0.5" value={morningDraft}
-                  onChange={e=>setMorningDraft(parseFloat(e.target.value))}
-                  className="sl-slider"
-                />
-                <div style={S.sliderEnds}>
-                  <span>1 · Rough</span>
-                  <span>10 · Great</span>
-                </div>
-                <button onClick={()=>{setMorning(dateKey(new Date()),morningDraft);setMorningDraft(5.5);}} style={S.sliderCommit}>Save</button>
-              </div>
-            </div>
-          )}
-
           <div style={S.statsGrid}>
-            <div style={S.resistCard}>
-              <div style={S.resistCardLeft}>
-                <span style={S.resistIcon}>✦</span>
-                <div style={S.resistCardBody}>
-                  <span style={S.resistValue}>{stats.weekResisted}</span>
-                  <span style={S.resistLabel}>Urges Resisted</span>
-                  <span style={S.resistSub}>this week{allTimeStats.resisted>stats.weekResisted?` · ${allTimeStats.resisted} all-time`:""}</span>
-                </div>
-              </div>
-              <button onClick={()=>addResist(dateKey(new Date()))} style={S.resistAddBtn}>
-                <span style={S.resistAddIcon}>✦</span>
-                <span>+1</span>
-              </button>
-            </div>
             {[[stats.dryStreak,"Day Streak","sober days in a row"],[stats.soberRate30+"%","Sober Rate","last 30 days"],[stats.avg30,"Daily Avg","last 30 days"],[stats.bestStreak,"Best Streak","all-time"]].map(([v,l,s],i)=>(
               <div key={i} style={S.statCard}>
                 <span style={S.statValue}>{v}</span>
