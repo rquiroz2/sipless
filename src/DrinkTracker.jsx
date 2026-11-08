@@ -150,7 +150,11 @@ export default function DrinkTracker() {
   useEffect(() => { saveJSON("sipless-day-cap", dayCap); }, [dayCap]);
   useEffect(() => { saveJSON("sipless-af-target", afTarget); }, [afTarget]);
   useEffect(() => { saveJSON("sipless-dark", darkMode); }, [darkMode]);
-  useEffect(() => { document.body.style.background = darkMode ? DARK.bg : LIGHT.bg; }, [darkMode]);
+  useEffect(() => {
+    const bg = darkMode ? DARK.bg : LIGHT.bg;
+    document.body.style.background = bg;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", bg);
+  }, [darkMode]);
 
   const showToast = useCallback((msg) => { setToast(msg); setTimeout(() => setToast(null), 2000); }, []);
 
